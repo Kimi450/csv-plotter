@@ -9,6 +9,8 @@ try:
         line = line.split(",")
         if line[0]!="" and line[0] != prevDate:
             # put in the prevDate date where date wasnt present
+            if "Date" in line[0]:
+                line[0]="Date"
             prevDate=line[0]
         line[0]=prevDate
         outFile.write(",".join(line))
