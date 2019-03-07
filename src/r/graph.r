@@ -1,15 +1,17 @@
 library(lattice)
 
-file <- read.csv("processed-csvmk/processed_acc.csv")
+df <- read.csv("processed-csv/processed_acc.csv")
+# df <- head(df, n=1000)
 
-file <- head(file, n=200)
+names(df)
 
-names(file)
+dev.new(width=30, height=6, unit="in")
 
-dev.new(width=60, height=6, unit="in")
+df$Date <- strptime(as.character(df$Date), "%d/%m/%Y")
+df$Date <- as.Date(df$Date, "%Y-%m-%d")
 
 xyplot(Balance~Date,
-       data=file,
+       data=df,
        type="l",
        auto.key=list(space='right'))
 
