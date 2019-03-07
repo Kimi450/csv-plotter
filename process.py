@@ -1,10 +1,23 @@
-in = open("acc.csv","r")
-out = open("processed_acc.csv","w")
+inputFrom="acc.csv"
+outputTo="processed_"+inputFrom
 
-prev=None
-for line in in:
-    line = line.split(",")
-    print(line)
-    if if line[0]!="" and line[0] != prev:
-        prev=line[0]
-    out.write()
+try:
+    inFile = open(inputFrom,"r")
+    outFile = open(outputTo,"w")
+    prevDate=None
+    for line in inFile:
+        line = line.split(",")
+        if line[0]!="" and line[0] != prevDate:
+            # put in the prevDate date where date wasnt present
+            prevDate=line[0]
+        line[0]=prevDate
+        outFile.write(",".join(line))
+except:
+    print("Error opening file(s), please try again.")
+    exit()
+finally:
+    try:
+        inFile.close()
+        outFile.close()
+    except:
+        pass
