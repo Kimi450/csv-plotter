@@ -1,11 +1,12 @@
 library(lattice)
-file <- read.csv("processed_acc.csv")
 
-file <- head(file, n=20)
+file <- read.csv("processed-csvmk/processed_acc.csv")
+
+file <- head(file, n=200)
 
 names(file)
 
-jpeg('plot.jpg')
+dev.new(width=60, height=6, unit="in")
 
 xyplot(Balance~Date,
        data=file,
