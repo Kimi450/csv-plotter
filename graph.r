@@ -1,14 +1,17 @@
 library(lattice)
-file <- read.csv("acc.csv")
+file <- read.csv("processed_acc.csv")
 
-file <- head(file, n=100)
-# head(file, n=100)
+file <- head(file, n=20)
 
 names(file)
 
-jpeg('rplot.jpg')
+jpeg('plot.jpg')
 
-xyplot(Balance~Date, data=file, tpye="l",auto.key=list(space='right'))
+xyplot(Balance~Date,
+       data=file,
+       type="l",
+       auto.key=list(space='right'))
+
 dev.off()
 # abline(lm(Date~Balance))
 # title("hi")
